@@ -1,1 +1,20 @@
-{"Hello": "World"}
+{
+  "Cities": {
+    "Waterloo": {
+      "Stores": {
+        "Costco": [43.4457429, -80.5794693],
+        "Walmart": [43.4333036, -80.5577978]
+      },
+
+      "UserPins": {
+        "userName": {
+          "location1": {
+            "coordinates": [43, -80],
+            "status": 5,
+            "image": "none"
+          }
+        }
+      }
+    }
+  }
+}
