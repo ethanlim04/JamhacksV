@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "type": "module",
+  "private": true,
   "scripts": {
-    "format": "../node_modules/.bin/prettier . --write"
+    "format": "../node_modules/.bin/prettier . --write",
+    "start": "nodemon --watch src src/index.js"
   },
   "keywords": [],
   "author": "",

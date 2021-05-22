@@ -2,6 +2,7 @@
   "scripts": {
     "format": "prettier . --write"
   },
+  "private": true,
   "devDependencies": {
     "prettier": "^2.3.0"
   },

@@ -1,7 +1,5 @@
 @use "../../styles/variables.scss";
 
-$pin-width: 5vw;
-
 .map-h2 {
   text-transform: uppercase;
   font-size: 1rem;
@@ -16,15 +14,16 @@ $pin-width: 5vw;
 }
 
 .pin {
+  $pin-width: 3rem;
+
   display: flex;
   align-items: center;
-  width: 180px;
   color: variables.$primary;
-  transform: translate(-$pin-width / 2, -$pin-width * 1.4);
-}
+  transform: translate(-$pin-width / 2, -$pin-width * 0.9);
 
-.pin-icon {
-  font-size: 4rem;
+  .pin-icon {
+    font-size: $pin-width;
+  }
 }
 
 .pin-text {
@@ -43,10 +42,12 @@ $pin-width: 5vw;
   }
 
   .pin {
-    width: $pin-width;
-  }
+    $pin-width: 5vw;
 
-  .pin-icon {
-    font-size: 10vw;
+    transform: translate(-$pin-width / 2, -$pin-width * 0.9);
+
+    .pin-icon {
+      font-size: $pin-width;
+    }
   }
 }
