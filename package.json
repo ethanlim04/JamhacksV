@@ -4,5 +4,8 @@
   },
   "devDependencies": {
     "prettier": "^2.3.0"
+  },
+  "dependencies": {
+    "iconify": "^1.3.0"
   }
 }
