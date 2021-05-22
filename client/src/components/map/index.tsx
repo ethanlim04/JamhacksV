@@ -24,6 +24,10 @@ export class Map extends React.Component<MapProps> {
         zoom: 11,
     }
 
+    public onMapClick = ({lat, lng}: GoogleMapReact.ClickEventValue): void => {
+        console.log({lat, lng})
+    }
+
     public render = () => {
         const {center = Map.defaultProps.center, zoom = Map.defaultProps.zoom} = this.props
 
@@ -33,6 +37,7 @@ export class Map extends React.Component<MapProps> {
 
                 <div className="google-map">
                     <GoogleMapReact
+                        onClick={this.onMapClick}
                         bootstrapURLKeys={{key: "AIzaSyDVTYkxSwz-XSCvNrg_yJn-TBqp_spUrAw"}}
                         defaultCenter={center}
                         defaultZoom={zoom}
