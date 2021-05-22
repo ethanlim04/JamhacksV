@@ -2,44 +2,123 @@
   "Cities": {
     "Waterloo": {
       "Stores": {
-        "Costco": [
-          43.4457429,
-          -80.5794693
-        ],
-        "Walmart": [
-          43.4333036,
-          -80.5577978
-        ],
-        "Food Basics": [43.47274964997111, -80.59342506056647],
-        "Domino's": [43.46753021963361, -80.5684578049693],
-        "Sobey's": [43.46849903492878, -80.56811433491599]
-      },
-
-
-    "UserPins": {
-        "userName": {
-          "location1": {
-            "coordinates": [
-              43,
-              -80
-            ],
-            "status": 5,
-            "image": "none"
-          },
-          "YOUR_SIS": {
-            "coordinates": [
-              -10,
-              10
-            ],
-            "status": 5,
-            "image": null
+        "Costco": {
+          "location": [
+            43.4457429,
+            -80.5794693
+          ],
+          "UserReports": {
+            "time": {
+              "10": {
+                "userName1": {
+                  "status": 5,
+                  "image": null
+                }
+              },
+              "11": {
+                "userName2": {
+                  "status": 5,
+                  "image": null
+                }
+              },
+              "1621726528302": {
+                "YOUR_COUSIN": {
+                  "status": 5,
+                  "image": null
+                }
+              }
+            }
+          }
+        },
+        "Walmart": {
+          "location": [
+            43.4333036,
+            -80.5577978
+          ],
+          "UserReports": {
+            "time": {
+              "10": {
+                "userName1": {
+                  "status": 5,
+                  "image": null
+                }
+              },
+              "11": {
+                "userName2": {
+                  "status": 5,
+                  "image": null
+                }
+              }
+            }
+          }
+        },
+        "Food Basics": {
+          "location": [
+            43.47274964997111,
+            -80.59342506056647
+          ],
+          "UserReports": {
+            "time": {
+              "10": {
+                "userName1": {
+                  "status": 5,
+                  "image": null
+                }
+              },
+              "11": {
+                "userName2": {
+                  "status": 5,
+                  "image": null
+                }
+              }
+            }
+          }
+        },
+        "Domino's": {
+          "location": [
+            43.46753021963361,
+            -80.5684578049693
+          ],
+          "UserReports": {
+            "time": {
+              "10": {
+                "userName1": {
+                  "status": 5,
+                  "image": null
+                }
+              },
+              "11": {
+                "userName2": {
+                  "status": 5,
+                  "image": null
+                }
+              }
+            }
+          }
+        },
+        "Sobey's": {
+          "location": [
+            43.46849903492878,
+            -80.56811433491599
+          ],
+          "UserReports": {
+            "time": {
+              "10": {
+                "userName1": {
+                  "status": 5,
+                  "image": null
+                }
+              },
+              "11": {
+                "userName2": {
+                  "status": 5,
+                  "image": null
+                }
+              }
+            }
           }
         }
-    }
-
-
-
-
+      }
     }
   }
 }

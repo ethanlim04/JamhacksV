@@ -121,7 +121,10 @@ export class Navbar extends React.PureComponent<Partial<RouteComponentProps>, Na
             )
         }
 
-        const navValues: string[][] = [["/", "Home"]]
+        const navValues: string[][] = [
+            ["/", "Home"],
+            ["/map", "Map"]
+        ]
 
         this._setCurrentPage(navValues)
 
