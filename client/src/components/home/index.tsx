@@ -1,11 +1,10 @@
 import "./home.scss"
-import {Card} from "../bootstrap"
 import Fuse from "fuse.js"
 import React from "react"
 import {Spinner} from "../bootstrap"
 import {StoreGrid} from "./storeGrid"
 import type {CitiesFetch, Store} from "../../types"
-import {arrayToChunks, getCoords} from "../../utils"
+import {getCoords} from "../../utils"
 import {url} from "../../globals"
 
 // thumbnail, name, location, time last updated
@@ -24,15 +23,20 @@ const getStores = async (): Promise<Store[]> => {
 
     for (const [cityName, {Stores: cityStores}] of Object.entries(cities)) {
         for (const [storeName, store] of Object.entries(cityStores)) {
+            const lastUpdated = Object.keys(store.UserReports.time).sort()[0]
+
             stores.push({
                 name: storeName,
                 location: cityName,
                 coords: {
-                    lng: store.location[0],
-                    lat: store.location[1],
+                    lng: store.location[1],
+                    lat: store.location[0],
                 },
                 distance: 0,
-                lastUpdated: Date.now(),
+                lastUpdated:
+                    lastUpdated === undefined || isNaN(Number(lastUpdated))
+                        ? undefined
+                        : Number(lastUpdated),
             })
         }
     }

@@ -34,7 +34,7 @@ export class Map extends React.PureComponent<MapProps, MapState> {
         super(props)
 
         /**
-         * IMPORTANT: COORDINATES OF THE KREMLIM: {lat: 55.752121, lng: 37.617664}
+         * IMPORTANT: COORDINATES OF THE KREMLIN: {lat: 55.752121, lng: 37.617664}
          */
 
         this.state = {center: props.center}
@@ -58,8 +58,6 @@ export class Map extends React.PureComponent<MapProps, MapState> {
 
     public render = () => {
         const {center} = this.state
-
-        console.log({center})
 
         return center ? (
             <div className="map">

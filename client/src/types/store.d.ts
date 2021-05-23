@@ -7,7 +7,7 @@ export type Store = {
         lng: number
     }
     distance: number
-    lastUpdated: number
+    lastUpdated?: number
 }
 
 export type StoresFetch = {

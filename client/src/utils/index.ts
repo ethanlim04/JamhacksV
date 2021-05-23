@@ -36,3 +36,36 @@ export const getCoords = async (): Promise<{lat: number; lng: number} | undefine
         return
     }
 }
+
+export function timeDifference(previous: number): string
+export function timeDifference(current: number, previous: number): string
+
+/**
+ * Calculates elapsed time between current and previous
+ *
+ * @param current - Current time
+ * @param previous - Previous time
+ * @returns Time difference
+ */
+export function timeDifference(current: number, previous?: number): string {
+    const msPerMinute = 60 * 1000
+    const msPerHour = msPerMinute * 60
+    const msPerDay = msPerHour * 24
+    const msPerMonth = msPerDay * 30
+    const msPerYear = msPerDay * 365
+    const elapsed = previous === undefined ? Date.now() - current : current - previous
+
+    if (elapsed < msPerMinute) {
+        return `${Math.round(elapsed / 1000)} seconds ago`
+    } else if (elapsed < msPerHour) {
+        return `${Math.round(elapsed / msPerMinute)} minutes ago`
+    } else if (elapsed < msPerDay) {
+        return `${Math.round(elapsed / msPerHour)} hours ago`
+    } else if (elapsed < msPerMonth) {
+        return `about ${Math.round(elapsed / msPerDay)} days ago`
+    } else if (elapsed < msPerYear) {
+        return `about ${Math.round(elapsed / msPerMonth)} months ago`
+    }
+
+    return `about ${Math.round(elapsed / msPerYear)} years ago`
+}

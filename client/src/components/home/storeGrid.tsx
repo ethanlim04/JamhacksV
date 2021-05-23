@@ -2,7 +2,7 @@ import "./home.scss"
 import {Card} from "../bootstrap"
 import React from "react"
 import type {Store} from "../../types"
-import {arrayToChunks} from "../../utils"
+import {arrayToChunks, timeDifference} from "../../utils"
 import qs from "query-string"
 
 export const StoreGrid: React.FC<{stores: Store[]}> = ({stores}) => (
@@ -15,8 +15,12 @@ export const StoreGrid: React.FC<{stores: Store[]}> = ({stores}) => (
                             <Card
                                 title={name}
                                 distance={String(distance)}
-                                text={`Store at ${location}`}
-                                footerText={`Last updated: ${new Date(lastUpdated).toString()}`}
+                                text={`Store in ${location}`}
+                                footerText={
+                                    lastUpdated
+                                        ? `Last updated: ${timeDifference(lastUpdated)}`
+                                        : undefined
+                                }
                                 image={thumbnail}
                                 button={{
                                     link: `map?${qs.stringify({name, ...coords})}`,

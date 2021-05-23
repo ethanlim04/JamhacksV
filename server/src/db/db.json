@@ -1459,6 +1459,20 @@
           ],
           "UserReports": {
             "time": {
+            }
+          }
+        }
+      }
+    },
+    "Russia (totally a city)": {
+      "Stores": {
+        "Putin's House": {
+          "location": [
+            55.752121,
+            37.617664
+          ],
+          "UserReports": {
+            "time": {
               "10": {
                 "userName1": {
                   "status": 5,
