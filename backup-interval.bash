@@ -3,7 +3,7 @@
 while :
 do
 	echo "Backing up..."
-    sleep 1200 &
+    sleep 15 &
 
     ./backup.sh
 
