@@ -23,7 +23,14 @@ export const StoreGrid: React.FC<{stores: Store[]}> = ({stores}) => (
                                 }
                                 image={thumbnail}
                                 button={{
-                                    link: `map?${qs.stringify({name, ...coords, city: location})}`,
+                                    link: `map?${qs.stringify({
+                                        name,
+                                        ...coords,
+                                        city: location,
+                                        image: thumbnail
+                                            ? encodeURIComponent(thumbnail)
+                                            : undefined,
+                                    })}`,
                                     text: "Map",
                                 }}
                             />

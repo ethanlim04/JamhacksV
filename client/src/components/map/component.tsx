@@ -22,8 +22,9 @@ type MapProps =
           center: LocationObj
           title: string
           cityName: string
+          thumbnail?: string
       }
-    | {center?: undefined; title?: undefined; cityName?: undefined}
+    | {center?: undefined; title?: undefined; cityName?: undefined; thumbnail?: undefined}
 
 export class Map extends React.PureComponent<MapProps, MapState> {
     public constructor(props: MapProps) {
@@ -75,6 +76,12 @@ export class Map extends React.PureComponent<MapProps, MapState> {
                 </div>
                 {this.props.title ? (
                     <Form city={this.props.cityName} storeName={this.props.title} />
+                ) : undefined}
+                {this.props.thumbnail ? (
+                    <>
+                        <h2 className="mt-5 px-3 text-center">Images</h2>{" "}
+                        <img className="w-100 mt-3" src={this.props.thumbnail} alt="img" />
+                    </>
                 ) : undefined}
             </>
         ) : (

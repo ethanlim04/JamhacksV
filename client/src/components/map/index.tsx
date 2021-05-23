@@ -9,32 +9,45 @@ const querySchema = yup.object({
     lat: yup.number().required(),
     name: yup.string().required(),
     city: yup.string().required(),
+    image: yup.string(),
 })
 
-const getStoreData = async (city: string, storeName: string) => {
-    const {Stores: stores} = (await (
-        await fetch(`${url}/getStores/${city}`, {method: "GET"})
-    ).json()) as StoresFetch
+// const getStoreData = async (city: string, storeName: string) => {
+//     const {Stores: stores} = (await (
+//         await fetch(`${url}/getStores/${city}`, {method: "GET"})
+//     ).json()) as StoresFetch
 
-    const userReports = Object.entries(stores[storeName].UserReports.time).map(([t, d]) => ({
-        time: Number(t),
-        ...d[Object.keys(d)[0]],
-    }))
+//     const userReports = Object.entries(stores[storeName].UserReports.time).map(([t, d]) => ({
+//         time: Number(t),
+//         ...d[Object.keys(d)[0]],
+//     }))
 
-    console.log(userReports)
-}
+//     console.log(userReports)
+// }
 
 export const Map = (): JSX.Element => {
     try {
         const {
             name: title,
             city,
+            image,
             ...center
         } = querySchema.validateSync(qs.parse(window.location.search))
 
-        getStoreData(city, title)
+        // getStoreData(city, title)
 
-        return <MapComponent {...{title, cityName: city, center}} />
+        console.log({image})
+
+        return (
+            <MapComponent
+                {...{
+                    title,
+                    cityName: city,
+                    center,
+                    thumbnail: image ? decodeURIComponent(image) : undefined,
+                }}
+            />
+        )
     } catch {
         return <MapComponent />
     }

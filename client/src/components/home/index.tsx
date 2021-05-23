@@ -19,18 +19,14 @@ const getStores = async (currentCoords: LocationObj): Promise<Store[]> => {
         await fetch(`${url}/getStores`, {method: "GET"})
     ).json()) as CitiesFetch
 
-    console.log(cities)
-
     const stores: Store[] = []
 
     for (const [cityName, {Stores: cityStores}] of Object.entries(cities)) {
         for (const [storeName, store] of Object.entries(cityStores)) {
-            store.UserReports.time = Object.fromEntries(
-                Object.entries(store.UserReports.time).sort(([a], [b]) => (a > b ? 1 : -1)),
-            )
-
             const lastUpdated =
-                store.UserReports.time[Number(Object.keys(store.UserReports.time)[0])]
+                store.UserReports.time[
+                    Math.max(...Object.keys(store.UserReports.time).map((val) => Number(val)))
+                ]
             const thumbnailStore = Object.values(store.UserReports.time).find((_user) => {
                 const _store = _user[Object.keys(_user)[0]]
 
@@ -39,7 +35,7 @@ const getStores = async (currentCoords: LocationObj): Promise<Store[]> => {
             const thumbnailUser = thumbnailStore ? Object.keys(thumbnailStore)[0] : undefined
             const thumbnail =
                 thumbnailUser && thumbnailStore
-                    ? `${url}/${thumbnailUser}/${storeName}.png`
+                    ? `${url}/image/${thumbnailUser}/${storeName}.png`
                     : undefined
 
             stores.push({
