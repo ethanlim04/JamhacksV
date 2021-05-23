@@ -14,10 +14,11 @@ const getData = async (City) => {
 
 const getStores = async (City) => {
     const result = JSON.parse(await fs.readFile("./db.json", "utf-8"))
-    let out = []
+    let out = {}
     Object.entries(result.Cities[City].Stores).forEach(([key, value]) => {
-        console.log(value.location)
+        out[key] = value.location
     })
+    return out
 }
 
 const writeData = async (City, StoreName, Username, Status, Picture) => {

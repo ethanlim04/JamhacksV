@@ -7,5 +7,9 @@ do
 
     clear
     echo "Next backup in 10 minutes"
-    sleep 600
+
+    for i in {9...0}; do
+        sleep 60
+        echo "Next backup in $i minutes"
+    done
 done
