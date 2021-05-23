@@ -16,7 +16,7 @@ const getStores = async (City) => {
     const result = JSON.parse(await fs.readFile("./db.json", "utf-8"))
     let out = []
     Object.entries(result.Cities[City].Stores).forEach(([key, value]) => {
-        console.log(key)
+        console.log(value.location)
     })
 }
 

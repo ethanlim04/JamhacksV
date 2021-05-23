@@ -10,19 +10,19 @@ export const Home = () => {
     const [stores, setStores] = React.useState<Store[]>([
         {
             thumbnail:
-                "https://media.discordapp.net/attachments/845034023804731453/845813264256467005/unknown.png",
+                "https://cdn.discordapp.com/attachments/845034023804731453/845831598917943336/unknown.png",
             location: {lat: 55.752121, lng: 37.617664},
             name: "your mom",
             lastUpdated: Date.now(),
         },
     ])
 
-    React.useCallback<void>(async () => {
+    React.useCallback(async () => {
         const coords = await getCoords()
 
         if (coords) {
         }
-    })
+    }, [])
 
     const onChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
         console.log(event.target.value)
