@@ -18,6 +18,8 @@ export const Home = () => {
             lastUpdated: Date.now(),
         },
     ])
+    const [searchValue, setSearchValue] = React.useState("")
+    const [shownStores, setShownStores] = React.useState(stores)
 
     React.useCallback(async () => {
         const coords = await getCoords()
@@ -27,7 +29,7 @@ export const Home = () => {
     }, [])
 
     const onChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
-        console.log(event.target.value)
+        setSearchValue(event.target.value)
     }
 
     return (
@@ -42,12 +44,13 @@ export const Home = () => {
                             aria-label="Store"
                             aria-describedby="basic-addon1"
                             onChange={onChange}
+                            value={searchValue}
                         />
                     </div>
                 </form>
             </nav>
             <div className="stores">
-                {arrayToChunks(stores, 3).map((storesRow, index) => (
+                {arrayToChunks(shownStores, 3).map((storesRow, index) => (
                     <div className="row g-0 g-md-3 g-lg-5" key={`store-${index}`}>
                         {storesRow.map(({name, location, distance, lastUpdated, thumbnail}, index2) => (
                             <div className="col-12 col-md-4" key={`store-${index}-${index2}`}>

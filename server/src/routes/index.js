@@ -1,3 +1,5 @@
+import * as db from "../db/getData"
+
 // Ported from https://github.com/Luke-zhang-04/talentmaker-server/blob/staging/src/routes/index.ts
 
 /**
@@ -31,7 +33,8 @@
  *
  * @type {(RouteGroup | Route)[]}
  */
-export const routes = [["/getStores", "get", (City) => {}]]
+// export const routes = [["/getStores", "get", (req, res) => {res.json(db.getData(req.body.City))}]]
+export const routes = [["/getStores", "get", (req, res) => {console.log(db.getData(req.body.City))}]]
 
 /**
  * @typedef {import("express").Handler} ExpressHandler

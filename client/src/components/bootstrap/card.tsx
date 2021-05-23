@@ -27,9 +27,17 @@ export const Card: React.FC<CardProps> = ({
         {image ? <img className="card-img-top" src={image} alt="Card image cap" /> : undefined}
         {headerText ? <div className="card-header">{headerText}</div> : undefined}
         <div className="card-body">
-            <div className="row g-0">
-                {title ? <h5 className="card-title">{title}</h5> : undefined}
-                {distance ? <div className="text-muted">{distance}</div> : undefined}
+            <div className="row">
+                {title ? (
+                    <div className="col-auto card-title">
+                        <h5>{title}</h5>
+                    </div>
+                ) : undefined}
+                {distance ? (
+                    <div className="col card-text">
+                        <small className="text-muted">{distance + "km away"}</small>
+                    </div>
+                ) : undefined}
             </div>
             {text ? <p className="card-text">{text}</p> : undefined}
             {button ? (
@@ -38,6 +46,8 @@ export const Card: React.FC<CardProps> = ({
                 </a>
             ) : undefined}
         </div>
-        {footerText ? <div className="card-footer text-muted">{footerText}</div> : undefined}
+        {footerText ? <div className="card-footer">
+            <small className="text-muted">{footerText}</small>
+        </div> : undefined}
     </div>
 )

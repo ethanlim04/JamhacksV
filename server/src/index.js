@@ -2,6 +2,7 @@ import express from "express"
 import cors from "cors"
 import cookieParser from "cookie-parser"
 import compression from "compression"
+import declareRoutes from "./routes"
 
 export const app = express()
 
@@ -18,5 +19,7 @@ app.use(express.json())
 app.use(cookieParser())
 
 app.use(compression())
+
+declareRoutes(app)
 
 app.listen(3333, () => console.log("Connected to localhost:3333"))

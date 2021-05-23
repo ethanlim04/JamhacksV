@@ -36,3 +36,14 @@ export const getCoords = async (): Promise<{lat: number; lng: number} | undefine
         return
     }
 }
+
+export const asyncFilter = async <T>(arr: T[], predicate?: (value: T, index: number, array: T[]) => unknown): Promise<T> => {
+    const items: Promise<T>[] = []
+    const
+
+    for (const [index, item] of array.entries()) {
+        items.push(new Promise((resolve) => {
+
+        }))
+    }
+}
