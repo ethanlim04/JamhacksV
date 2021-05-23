@@ -53,7 +53,7 @@ export const Home = () => {
                             <div className="col-12 col-md-4" key={`store-${index}-${index2}`}>
                                 <Card
                                     title={name}
-                                    text={`Store at ${location}}`}
+                                    text={`Store at ${location}`}
                                     footerText={`Last updated: ${new Date(
                                         lastUpdated,
                                     ).toString()}`}
