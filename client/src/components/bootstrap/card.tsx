@@ -46,8 +46,10 @@ export const Card: React.FC<CardProps> = ({
                 </a>
             ) : undefined}
         </div>
-        {footerText ? <div className="card-footer">
-            <small className="text-muted">{footerText}</small>
-        </div> : undefined}
+        {footerText ? (
+            <div className="card-footer">
+                <small className="text-muted">{footerText}</small>
+            </div>
+        ) : undefined}
     </div>
 )

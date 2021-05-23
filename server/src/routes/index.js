@@ -34,7 +34,17 @@ import * as db from "../db/getData"
  * @type {(RouteGroup | Route)[]}
  */
 // export const routes = [["/getStores", "get", (req, res) => {res.json(db.getData(req.body.City))}]]
-export const routes = [["/getStores", "get", (req, res) => {console.log(db.getData(req.body.City))}]]
+export const routes = [
+    [
+        "/getStores",
+        "get",
+        async (req, res) => {
+            // console.log(await db.getData("Waterloo"))
+
+            res.status(200).json(await db.getData("Waterloo"))
+        },
+    ],
+]
 
 /**
  * @typedef {import("express").Handler} ExpressHandler
@@ -55,23 +65,23 @@ const createHandler = (func) => {
         try {
             const result = await func(request, response, nextFunction)
 
-            return result === undefined ? response.status(Status.NoContent).send() : result
+            return result === undefined ? response.status(204).send() : result
         } catch (err) {
             if (err instanceof Error) {
                 let status
 
                 switch (err.name) {
                     case "AuthenticationError":
-                        status = Status.Forbidden
+                        status = 403
                         break
 
                     case "ValidationError":
                     case "SyntaxError":
-                        status = Status.BadRequest
+                        status = 400
                         break
 
                     default:
-                        status = Status.InternalError
+                        status = 500
                         break
                 }
 
@@ -81,7 +91,7 @@ const createHandler = (func) => {
                 })
             }
 
-            return response.status(Status.InternalError).json({
+            return response.status(500).json({
                 name: "Error",
                 message: String(err),
             })

@@ -1,5 +1,6 @@
 import "./home.scss"
 import {Card} from "../bootstrap"
+import FuzzySearch from "fuzzy-search"
 import React from "react"
 import type {Store} from "../../types"
 import {arrayToChunks, getCoords} from "../../utils"
@@ -30,6 +31,20 @@ export const Home = () => {
 
     const onChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
         setSearchValue(event.target.value)
+
+        setShownStores(
+            searchValue
+                ? stores.filter((store) =>
+                      {
+                          const res = FuzzySearch.isMatch(`${store.location} ${store.name}`, searchValue, false)
+
+                          console.log(res)
+
+                          return res
+                      },
+                  )
+                : stores,
+        )
     }
 
     return (
@@ -52,19 +67,21 @@ export const Home = () => {
             <div className="stores">
                 {arrayToChunks(shownStores, 3).map((storesRow, index) => (
                     <div className="row g-0 g-md-3 g-lg-5" key={`store-${index}`}>
-                        {storesRow.map(({name, location, distance, lastUpdated, thumbnail}, index2) => (
-                            <div className="col-12 col-md-4" key={`store-${index}-${index2}`}>
-                                <Card
-                                    title={name}
-                                    distance={String(distance)}
-                                    text={`Store at ${location}`}
-                                    footerText={`Last updated: ${new Date(
-                                        lastUpdated,
-                                    ).toString()}`}
-                                    image={thumbnail}
-                                />
-                            </div>
-                        ))}
+                        {storesRow.map(
+                            ({name, location, distance, lastUpdated, thumbnail}, index2) => (
+                                <div className="col-12 col-md-4" key={`store-${index}-${index2}`}>
+                                    <Card
+                                        title={name}
+                                        distance={String(distance)}
+                                        text={`Store at ${location}`}
+                                        footerText={`Last updated: ${new Date(
+                                            lastUpdated,
+                                        ).toString()}`}
+                                        image={thumbnail}
+                                    />
+                                </div>
+                            ),
+                        )}
                     </div>
                 ))}
             </div>

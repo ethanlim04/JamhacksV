@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "format": "../node_modules/.bin/prettier . --write",
-    "start": "nodemon --es-module-specifier-resolution=node --watch src src/index.js"
+    "start": "nodemon --es-module-specifier-resolution=node --watch src --ignore \"**/*.json\" src/index.js"
   },
   "keywords": [],
   "author": "",
