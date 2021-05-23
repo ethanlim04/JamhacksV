@@ -52,26 +52,22 @@ export const routes = [
         },
     ],
     ["/getStores", "get", async (req, res) => res.status(200).json(await db.getData())],
-    [
-        "/addData",
-        "post",
-        async (req, res) => {
-            console.log(req.body)
-            // if (!req.params.city) {
-            //     return res.status(400).json({
-            //         message: "No city specified",
-            //     })
-            // }
-            await db.writeData(
-                req.body.City,
-                req.body.StoreName,
-                req.body.Username,
-                req.body.Status,
-                req.body.Picture,
-            )
-            return res.status(200).json(await db.getData())
-        },
-    ],
+    // [
+    //     "/addData",
+    //     "post",
+    //     async (req, res) => {
+    //         console.log(req.body)
+
+    //         await db.writeData(
+    //             req.body.City,
+    //             req.body.StoreName,
+    //             req.body.Username,
+    //             req.body.Status,
+    //             req.body.Picture,
+    //         )
+    //         return res.status(200).json(await db.getData())
+    //     },
+    // ],
 ]
 
 /**
