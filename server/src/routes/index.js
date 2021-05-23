@@ -31,11 +31,11 @@
  *
  * @type {(RouteGroup | Route)[]}
  */
-export const routes = [
-    ["/your-mom", "get", func]
-]
+export const routes = [["/your-mom", "get", func]]
 
-/** @typedef {import("express").Handler} ExpressHandler */
+/**
+ * @typedef {import("express").Handler} ExpressHandler
+ */
 
 /**
  * Creates a wrapper handler which calls the existing handler
@@ -45,7 +45,9 @@ export const routes = [
  *   appropriate response depending on the error
  */
 const createHandler = (func) => {
-    /** @type {ExpressHandler} */
+    /**
+     * @type {ExpressHandler}
+     */
     const handler = async (request, response, nextFunction) => {
         try {
             const result = await func(request, response, nextFunction)

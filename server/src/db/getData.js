@@ -18,7 +18,7 @@ const writeData = async (City, StoreName, Username, Status, Picture) => {
     result.Cities[City].Stores[StoreName].UserReports.time[currentTime] = {}
     result.Cities[City].Stores[StoreName].UserReports.time[currentTime][Username] = {
         status: Status,
-        image: Picture
+        image: Picture,
     }
 
     await fs.writeFile("./db.json", JSON.stringify(result, null, 2))
@@ -26,9 +26,7 @@ const writeData = async (City, StoreName, Username, Status, Picture) => {
     await getData()
 }
 
-const encode_img = (picture) => {
-
-}
+const encode_img = (picture) => {}
 
 // getData()
 writeData("Waterloo", "Costco", "YOUR_COUSIN", 5, null)
