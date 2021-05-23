@@ -1,10 +1,10 @@
 // const multer = require("multer")
 import multer from "multer"
 
-export const upload_function = (Username) => {
+export const upload_function = (dirName) => {
     const fileStorageEngine = multer.diskStorage({
         destination: (req, file, cb) => {
-            cb(null, `./src/db/image/${Username}`)
+            cb(null, `./src/db/image/${dirName}`)
         },
         filename: (req, file, cb) => {
             cb(null, Date.now() + "--" + file.originalname)

@@ -23,7 +23,7 @@ export const getStores = async (City) => {
 
 export const writeData = async (City, StoreName, Username, Status, Picture) => {
     const result = JSON.parse(await fs.readFile(path.join(__dirname, "db.json"), "utf-8"))
-    const currentTime = new Date().getTime()
+    const currentTime = Date.now()
 
     let city = result.Cities[City]
 

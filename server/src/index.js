@@ -27,8 +27,11 @@ app.use(compression())
 
 declareRoutes(app)
 
-app.post("/addData", upload.upload_function("./tmp/image.png"), (req, res) => {
+// app.post("/addData", upload.upload_function("./tmp/image.png"), (req, res) => {
+app.post("/addData", upload.upload_function("temp"), (req, res) => {
     const {query} = req
+    console.log(query)
+    // E.g http://localhost:3333/addData?username=bob&city=Waterloo&storeName=Costco&status=5&picture=true
 
     const {city, storeName, username} = query
     const status = Number(query.status)

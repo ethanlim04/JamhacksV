@@ -15,3 +15,7 @@
     display: inline-block; // Display for aligning icon
     vertical-align: middle; // Align icon in middle
 }
+
+.form-range::-moz-range-thumb {
+    cursor: ew-resize;
+}
