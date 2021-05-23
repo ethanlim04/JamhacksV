@@ -50,6 +50,7 @@ export const Home = () => {
     const [stores, setStores] = React.useState<Store[] | undefined>()
     const [searchValue, setSearchValue] = React.useState("")
     const [shownStores, setShownStores] = React.useState(stores)
+    const [sortMethod, setSortMethod] = React.useState<"name" | "distance">("distance")
 
     const setNewStores = React.useCallback(async () => {
         try {
@@ -70,12 +71,12 @@ export const Home = () => {
         const coords = await getCoords()
 
         if (coords) {
-            const newStores = (await getStores(coords)).sort((store1, store2) =>
-                store1.distance > store2.distance ? 1 : -1,
-            )
+            const newStores = await getStores(coords)
 
             setStores(newStores)
-            setShownStores(newStores)
+            setShownStores(
+                newStores.sort((store1, store2) => (store1.distance > store2.distance ? 1 : -1)),
+            )
             localStorage.setItem("storesCache", JSON.stringify(newStores))
         }
     }, [])
@@ -120,7 +121,25 @@ export const Home = () => {
                     </div>
                 </form>
             </nav>
-            <div className="stores">
+            <div className="stores container-fluid">
+                <button
+                    className="btn btn-secondary"
+                    onClick={() => {
+                        const newMethod = sortMethod === "name" ? "distance" : "name"
+
+                        setShownStores(
+                            stores?.sort((store1, store2) =>
+                                store1[newMethod] > store2[newMethod] ? 1 : -1,
+                            ),
+                        )
+                        setSortMethod(newMethod)
+                    }}
+                >
+                    <span className="material-icons">filter_list</span> Sort by{" "}
+                    {sortMethod === "name" ? "distance" : "name"}
+                </button>
+                <br />
+                <small>Sorting by {sortMethod}</small>
                 {shownStores ? (
                     <StoreGrid stores={shownStores} />
                 ) : (

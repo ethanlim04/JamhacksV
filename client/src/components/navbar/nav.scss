@@ -32,7 +32,7 @@
 }
 
 .mobile-nav {
-    $nav-item-count: 5;
+    $nav-item-count: 2;
     $underline-height: 2.5px;
     $transition-timing: cubic-bezier(0.645, 0.045, 0.355, 1);
 
@@ -65,6 +65,7 @@
         align-items: center;
 
         .mobile-nav-link {
+            width: 100%;
             color: variables.$light;
             text-decoration: none;
             text-align: center;
