@@ -136,7 +136,14 @@ export const formatDistance = (km: number): string => {
 
     const distance = roundTo(km, 3)
     const whole = Math.floor(distance)
-    const decimal = roundTo(distance - whole, 3)
 
-    return `${whole.toLocaleString()}km ${decimal.toLocaleString()}m`
+    if (km >= 1) {
+        const meters = Math.round((distance - whole) * 10)
+
+        return `${whole}.${meters}km`
+    }
+
+    const meters = Math.round((distance - whole) * 10 ** 3)
+
+    return `${meters}m`
 }

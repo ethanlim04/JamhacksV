@@ -56,7 +56,9 @@ export const Home = () => {
             const cache = localStorage.getItem("storesCache")
 
             if (cache !== null) {
-                const cachedStores = JSON.parse(cache) as Store[]
+                const cachedStores = (JSON.parse(cache) as Store[]).sort?.((store1, store2) =>
+                    store1.distance > store2.distance ? 1 : -1,
+                )
 
                 if (cachedStores instanceof Array) {
                     setStores(cachedStores)
@@ -68,7 +70,9 @@ export const Home = () => {
         const coords = await getCoords()
 
         if (coords) {
-            const newStores = await getStores(coords)
+            const newStores = (await getStores(coords)).sort((store1, store2) =>
+                store1.distance > store2.distance ? 1 : -1,
+            )
 
             setStores(newStores)
             setShownStores(newStores)
