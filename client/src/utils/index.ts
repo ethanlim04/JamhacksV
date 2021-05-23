@@ -37,8 +37,13 @@ export const getCoords = async (): Promise<{lat: number; lng: number} | undefine
     }
 }
 
+/**
+ * Calculates elapsed time between `Date.now()` and previous
+ *
+ * @param previous - Previous time
+ * @returns Time difference
+ */
 export function timeDifference(previous: number): string
-export function timeDifference(current: number, previous: number): string
 
 /**
  * Calculates elapsed time between current and previous
@@ -47,6 +52,8 @@ export function timeDifference(current: number, previous: number): string
  * @param previous - Previous time
  * @returns Time difference
  */
+export function timeDifference(current: number, previous: number): string
+
 export function timeDifference(current: number, previous?: number): string {
     const msPerMinute = 60 * 1000
     const msPerHour = msPerMinute * 60
@@ -55,17 +62,28 @@ export function timeDifference(current: number, previous?: number): string {
     const msPerYear = msPerDay * 365
     const elapsed = previous === undefined ? Date.now() - current : current - previous
 
+    let n = 0
+    let s = ""
+
     if (elapsed < msPerMinute) {
-        return `${Math.round(elapsed / 1000)} seconds ago`
+        n = Math.round(elapsed / 1000)
+        s = "second"
     } else if (elapsed < msPerHour) {
-        return `${Math.round(elapsed / msPerMinute)} minutes ago`
+        n = Math.round(elapsed / msPerMinute)
+        s = "minute"
     } else if (elapsed < msPerDay) {
-        return `${Math.round(elapsed / msPerHour)} hours ago`
+        n = Math.round(elapsed / msPerHour)
+        s = "hour"
     } else if (elapsed < msPerMonth) {
-        return `about ${Math.round(elapsed / msPerDay)} days ago`
+        n = Math.round(elapsed / msPerDay)
+        s = "day"
     } else if (elapsed < msPerYear) {
-        return `about ${Math.round(elapsed / msPerMonth)} months ago`
+        n = Math.round(elapsed / msPerMonth)
+        s = "month"
+    } else {
+        n = Math.round(elapsed / msPerYear)
+        s = "year"
     }
 
-    return `about ${Math.round(elapsed / msPerYear)} years ago`
+    return `${n} ${s + (n == 1 ? "" : "s")} ago`
 }

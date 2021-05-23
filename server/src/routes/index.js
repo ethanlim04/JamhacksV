@@ -62,10 +62,14 @@ export const routes = [
             //         message: "No city specified",
             //     })
             // }
-
-            const data = {YES: "YUES"}
-            // await db.writeData("Waterloo", "Costco", "YOUR_COUSIN", 5, null)
-            return res.status(200).json(data)
+            await db.writeData(
+                req.body.City,
+                req.body.StoreName,
+                req.body.Username,
+                req.body.Status,
+                req.body.Picture,
+            )
+            return res.status(200).json(await db.getData())
         },
     ],
 ]

@@ -39,5 +39,5 @@ export const writeData = async (City, StoreName, Username, Status, Picture) => {
 const encode_img = (picture) => {}
 
 // getData()
-writeData("Waterloo", "Costco", "YOUR_COUSIN", 5, null)
-getStores("Waterloo")
+// writeData("Waterloo", "Costco", "YOUR_COUSIN", 5, null)
+// getStores("Waterloo")
