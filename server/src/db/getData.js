@@ -25,18 +25,40 @@ export const writeData = async (City, StoreName, Username, Status, Picture) => {
     const result = JSON.parse(await fs.readFile(path.join(__dirname, "db.json"), "utf-8"))
     const currentTime = new Date().getTime()
 
-    result.Cities[City].Stores[StoreName].UserReports.time[currentTime] = {}
-    result.Cities[City].Stores[StoreName].UserReports.time[currentTime][Username] = {
+    let city = result.Cities[City]
+
+    if (city === undefined) {
+        result.Cities[City] = city = {
+            Stores: {
+                [StoreName]: {
+                    UserReports: {
+                        time: {},
+                    },
+                },
+            },
+        }
+    } else if (city.Stores[StoreName] === undefined) {
+        city.Stores[StoreName] = {
+            UserReports: {
+                time: {},
+            },
+        }
+    }
+
+    city.Stores[StoreName].UserReports.time[currentTime] = {}
+    city.Stores[StoreName].UserReports.time[currentTime][Username] = {
         status: Status,
         image: Picture,
     }
+
+    console.log(result)
 
     await fs.writeFile(path.join(__dirname, "db.json"), JSON.stringify(result, null, 2))
 
     await getData(City)
 }
 
-const encode_img = (picture) => {}
+// const encode_img = (picture) => {}
 
 // getData()
 // writeData("Waterloo", "Costco", "YOUR_COUSIN", 5, null)

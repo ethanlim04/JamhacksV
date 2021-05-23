@@ -28,15 +28,29 @@ app.use(compression())
 declareRoutes(app)
 
 app.post("/addData", upload.upload_function("./tmp/image.png"), (req, res) => {
-    console.log(req.body)
-    db.writeData(
-        req.body.City,
-        req.body.StoreName,
-        req.body.Username,
-        req.body.Status,
-        req.body.Picture,
-    )
-    return res.status(200).json(db.getData())
+    const {query} = req
+
+    const {city, storeName, username} = query
+    const status = Number(query.status)
+    const picture = query.picture ? query.picture === "true" : undefined
+
+    console.log({city, storeName, username, status, picture})
+
+    if (
+        typeof city === "string" &&
+        typeof storeName === "string" &&
+        typeof username === "string" &&
+        !isNaN(status) &&
+        status >= 1 &&
+        status <= 5 &&
+        picture !== undefined
+    ) {
+        db.writeData(city, storeName, username, status, picture)
+
+        return res.status(200).json(db.getData())
+    }
+
+    return res.status(400).json({message: "bad request"})
 })
 
 app.listen(3333, () => console.log("Connected to localhost:3333"))
