@@ -31,7 +31,7 @@
  *
  * @type {(RouteGroup | Route)[]}
  */
-export const routes = [["/your-mom", "get", () => {}]]
+export const routes = [["/getStores", "get", (City) => {}]]
 
 /**
  * @typedef {import("express").Handler} ExpressHandler

@@ -2,6 +2,7 @@ import "./map.scss"
 import React from "react"
 import GoogleMapReact from "google-map-react"
 import {Spinner} from "../bootstrap"
+import {getCoords} from "../../utils"
 
 // https://blog.logrocket.com/a-practical-guide-to-integrating-google-maps-in-react/
 
@@ -30,18 +31,12 @@ export class Map extends React.Component<{}, MapState> {
     }
 
     public componentDidMount = async () => {
-        try {
-            const location = await new Promise<GeolocationPosition>((resolve, reject) => {
-                navigator.geolocation?.getCurrentPosition(resolve, reject, {
-                    enableHighAccuracy: true,
-                })
-            })
+        const coords = await getCoords()
 
+        if (coords) {
             this.setState({
-                center: {lat: location.coords.latitude, lng: location.coords.longitude},
+                center: coords,
             })
-        } catch (err) {
-            console.error((err as GeolocationPositionError).message)
         }
     }
 
