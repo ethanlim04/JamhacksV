@@ -1,4 +1,5 @@
 import * as db from "../db/getData"
+import * as images from "./image"
 
 // Ported from https://github.com/Luke-zhang-04/talentmaker-server/blob/staging/src/routes/index.ts
 
@@ -52,22 +53,7 @@ export const routes = [
         },
     ],
     ["/getStores", "get", async (req, res) => res.status(200).json(await db.getData())],
-    // [
-    //     "/addData",
-    //     "post",
-    //     async (req, res) => {
-    //         console.log(req.body)
-
-    //         await db.writeData(
-    //             req.body.City,
-    //             req.body.StoreName,
-    //             req.body.Username,
-    //             req.body.Status,
-    //             req.body.Picture,
-    //         )
-    //         return res.status(200).json(await db.getData())
-    //     },
-    // ],
+    ["/image/:user/:store", "get", images.getImage],
 ]
 
 /**

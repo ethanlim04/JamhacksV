@@ -3,3 +3,5 @@
 
 # Don't diff or textually merge source maps
 *.map binary
+
+#Changing so it doesn't say "I pissed the bed" on the front page of our repo
