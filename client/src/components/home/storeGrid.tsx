@@ -19,7 +19,7 @@ export const StoreGrid: React.FC<{stores: Store[]}> = ({stores}) => (
                                 footerText={
                                     lastUpdated
                                         ? `Last updated: ${timeDifference(lastUpdated)}`
-                                        : undefined
+                                        : "Never updated"
                                 }
                                 image={thumbnail}
                                 button={{

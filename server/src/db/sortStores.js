@@ -19,35 +19,31 @@ const sortData = (location, stores) => {
     // stores: unsorted array of [name, lat, long] sub arrays representing each store in db
     // num: optional number of stores to recieve. =< 0 -- all of them
 
+    location = location.map(toRad)
+
     let storeArray = []
     let lat,
         long = location
 
     //convert dict to array
     for (const [key, value] of Object.entries(stores)) {
-        storeArray.push([key, value[0], value[1]])
+        storeArray.push([key, haversine(toRad(value[0]), toRad(value[1]), lat, long)])
     }
 
     storeArray.sort(function (first, second) {
-        let dist1 = haversine(first[1], first[2], lat, long)
-        let dist2 = haversine(second[1], second[2], lat, long)
-
-        if (dist1 > dist2) return 1
-        if (dist2 > dist1) return 0
+        if (first[1] > second[1]) return 1
         return 0
     })
 
-    //parse out lat/long info
-
-    let names = []
-
-    for (let storeData of storeArray) {
-        names.push(storeData[0])
-    }
-
-    return names
+    return storeArray
 }
 
-console.log(
-    haversine(43.445407768273796, -80.57966495025991, 43.455607335555065, -80.38605957256729),
-)
+const data = {
+    Costco: [43.4457429, -80.5794693],
+    Walmart: [43.4333036, -80.5577978],
+    "Food Basics": [43.47274964997111, -80.59342506056647],
+    "Domino's": [43.46753021963361, -80.5684578049693],
+    "Sobey's": [43.46849903492878, -80.56811433491599],
+}
+
+console.log(sortData([43.44535015092781, -80.57957865759745], data))

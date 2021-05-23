@@ -23,7 +23,9 @@ const getStores = async (): Promise<Store[]> => {
 
     for (const [cityName, {Stores: cityStores}] of Object.entries(cities)) {
         for (const [storeName, store] of Object.entries(cityStores)) {
-            const lastUpdated = Object.keys(store.UserReports.time).sort()[0]
+            const lastUpdated = Object.keys(store.UserReports.time).sort((a, b) =>
+                a < b ? 1 : -1,
+            )[0]
 
             stores.push({
                 name: storeName,

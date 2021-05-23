@@ -17,6 +17,7 @@ export const getStores = async (City) => {
     Object.entries(result.Cities[City].Stores).forEach(([key, value]) => {
         out[key] = value.location
     })
+    console.log(out)
     return out
 }
 

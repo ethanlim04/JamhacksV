@@ -64,6 +64,7 @@ export const routes = [
             // }
 
             const data = {YES: "YUES"}
+            // await db.writeData("Waterloo", "Costco", "YOUR_COUSIN", 5, null)
             return res.status(200).json(data)
         },
     ],
