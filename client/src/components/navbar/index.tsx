@@ -180,7 +180,7 @@ export class Navbar extends React.PureComponent<Partial<RouteComponentProps>, Na
         const NavLinks = this._navLinks
 
         return (
-            <div className="mobile-nav bg-lighter">
+            <div className="mobile-nav bg-darker">
                 <NavLinks
                     ismobile={true}
                     isloggedin={currentUser !== null && currentUser !== undefined}

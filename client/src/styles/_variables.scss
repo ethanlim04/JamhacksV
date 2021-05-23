@@ -2,14 +2,10 @@
 @import "../../node_modules/bootstrap/scss/variables";
 
 $none: rgba(0, 0, 0, 0);
-// $primary: #3f88c5;
-// $secondary: #032b43;
-// $light: #eee;
-$lighter: #fff;
+$lighter: mix($light, white, 75%);
 $light-grey: mix($light, black, 90%);
 $grey: mix($light, black, 40%);
-// $dark: #373737;
-$darker: #272727;
+$darker: mix($dark, black, 75%);
 $dark-grey: mix($dark, white, 90%);
 $accent: #01559c;
 

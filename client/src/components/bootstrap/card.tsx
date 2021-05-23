@@ -23,7 +23,7 @@ export const Card: React.FC<CardProps> = ({
     footerText,
     headerText,
 }) => (
-    <div className="card bg-dark">
+    <div className="card bg-darker">
         {image ? <img className="card-img-top" src={image} alt="Card image cap" /> : undefined}
         {headerText ? <div className="card-header">{headerText}</div> : undefined}
         <div className="card-body">
