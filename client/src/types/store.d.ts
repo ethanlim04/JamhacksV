@@ -5,6 +5,7 @@ export type Store = {
     coords: LocationObj
     distance: number
     lastUpdated?: number
+    busyness?: number
 }
 
 export type StoresFetch = {

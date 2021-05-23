@@ -1,61 +1,16 @@
 import "./home.scss"
 import Fuse from "fuse.js"
 import React from "react"
-import {Spinner} from "../bootstrap"
 import {StoreGrid} from "./storeGrid"
+import {Spinner} from "../bootstrap"
 import type {CitiesFetch, Store} from "../../types"
-import {getCoords, haversine} from "../../utils"
+import {getCoords} from "../../utils"
 import {url} from "../../globals"
-
-// thumbnail, name, location, time last updated
+import {getStores} from "./fetch"
 
 const searchOptions: Fuse.IFuseOptions<Store> = {
     keys: ["location", "name"],
     shouldSort: true,
-}
-
-const getStores = async (currentCoords: LocationObj): Promise<Store[]> => {
-    const {Cities: cities} = (await (
-        await fetch(`${url}/getStores`, {method: "GET"})
-    ).json()) as CitiesFetch
-
-    const stores: Store[] = []
-
-    for (const [cityName, {Stores: cityStores}] of Object.entries(cities)) {
-        for (const [storeName, store] of Object.entries(cityStores)) {
-            const lastUpdated =
-                store.UserReports.time[
-                    Math.max(...Object.keys(store.UserReports.time).map((val) => Number(val)))
-                ]
-            const thumbnailStore = Object.values(store.UserReports.time).find((_user) => {
-                const _store = _user[Object.keys(_user)[0]]
-
-                return _store.image === true
-            })
-            const thumbnailUser = thumbnailStore ? Object.keys(thumbnailStore)[0] : undefined
-            const thumbnail =
-                thumbnailUser && thumbnailStore
-                    ? `${url}/image/${thumbnailUser}/${storeName}.png`
-                    : undefined
-
-            stores.push({
-                name: storeName,
-                location: cityName,
-                coords: {
-                    lng: store.location[1],
-                    lat: store.location[0],
-                },
-                distance: haversine(currentCoords.lat, currentCoords.lng, ...store.location),
-                lastUpdated:
-                    lastUpdated === undefined || isNaN(Number(lastUpdated))
-                        ? undefined
-                        : Number(lastUpdated),
-                thumbnail: thumbnail ?? undefined,
-            })
-        }
-    }
-
-    return stores
 }
 
 export const Home = () => {

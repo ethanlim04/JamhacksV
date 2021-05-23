@@ -20,12 +20,6 @@
                   "status": 5,
                   "image": false
                 }
-              },
-              "1621780514936": {
-                "Luke": {
-                  "status": 5,
-                  "image": true
-                }
               }
             }
           }
@@ -49,7 +43,7 @@
                   "image": false
                 }
               },
-              "1621780488848": {
+              "1621783349233": {
                 "Gary": {
                   "status": 5,
                   "image": true
@@ -77,18 +71,6 @@
                   "image": false
                 }
               },
-              "1621774391301": {
-                "Irohasu": {
-                  "status": 5,
-                  "image": true
-                }
-              },
-              "1621776066644": {
-                "Bob": {
-                  "status": 5,
-                  "image": true
-                }
-              },
               "1621777551446": {
                 "Bob": {
                   "status": 5,
@@ -105,15 +87,15 @@
           ],
           "UserReports": {
             "time": {
-              "10": {
+              "1621783349233": {
                 "userName1": {
-                  "status": 5,
+                  "status": 1,
                   "image": false
                 }
               },
-              "11": {
+              "1621783349223": {
                 "userName2": {
-                  "status": 5,
+                  "status": 0,
                   "image": false
                 }
               }
@@ -127,15 +109,15 @@
           ],
           "UserReports": {
             "time": {
-              "10": {
+              "1621783349233": {
                 "userName1": {
-                  "status": 5,
+                  "status": 10,
                   "image": false
                 }
               },
-              "11": {
+              "1621783349223": {
                 "userName2": {
-                  "status": 5,
+                  "status": 10,
                   "image": false
                 }
               }
@@ -148,7 +130,20 @@
             -80.56811433491599
           ],
           "UserReports": {
-            "time": {}
+            "time": {
+              "1621783349233": {
+                "userName1": {
+                  "status": 2,
+                  "image": false
+                }
+              },
+              "1621783349223": {
+                "userName2": {
+                  "status": 1,
+                  "image": false
+                }
+              }
+            }
           }
         }
       }
@@ -164,13 +159,13 @@
             "time": {
               "10": {
                 "userName1": {
-                  "status": 5,
+                  "status": 10,
                   "image": false
                 }
               },
               "11": {
                 "userName2": {
-                  "status": 5,
+                  "status": 8,
                   "image": false
                 }
               }

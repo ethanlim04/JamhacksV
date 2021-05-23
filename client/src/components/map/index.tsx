@@ -34,10 +34,6 @@ export const Map = (): JSX.Element => {
             ...center
         } = querySchema.validateSync(qs.parse(window.location.search))
 
-        // getStoreData(city, title)
-
-        console.log({image})
-
         return (
             <MapComponent
                 {...{
