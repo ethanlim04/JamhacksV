@@ -2,14 +2,40 @@ import "./home.scss"
 import {Card} from "../bootstrap"
 import Fuse from "fuse.js"
 import React from "react"
-import type {Store} from "../../types"
+import type {CitiesFetch, Store} from "../../types"
 import {arrayToChunks, getCoords} from "../../utils"
+import {url} from "../../globals"
 
 // thumbnail, name, location, time last updated
 
 const searchOptions: Fuse.IFuseOptions<Store> = {
     keys: ["location", "name"],
     shouldSort: true,
+}
+
+const getStores = async (): Promise<Store[]> => {
+    const {Cities: cities} = (await (
+        await fetch(`${url}/getStores`, {method: "GET"})
+    ).json()) as CitiesFetch
+
+    const stores: Store[] = []
+
+    for (const [cityName, {Stores: cityStores}] of Object.entries(cities)) {
+        for (const [storeName, store] of Object.entries(cityStores)) {
+            stores.push({
+                name: storeName,
+                location: cityName,
+                coords: {
+                    lng: store.location[0],
+                    lat: store.location[1],
+                },
+                distance: 0,
+                lastUpdated: Date.now(),
+            })
+        }
+    }
+
+    return stores
 }
 
 export const Home = () => {
@@ -31,6 +57,8 @@ export const Home = () => {
         const coords = await getCoords()
 
         if (coords) {
+            setStores(await getStores())
+            setShownStores(stores)
         }
     }, [])
 

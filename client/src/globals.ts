@@ -1,7 +1,4 @@
-export const url =
-    process.env.NODE_ENV === "development"
-        ? "http://localhost:3333"
-        : "https://g5a50u6z60.execute-api.us-east-1.amazonaws.com/prod"
+export const url = "http://localhost:3333"
 
 export enum BreakPoints {
     Xs = 0,

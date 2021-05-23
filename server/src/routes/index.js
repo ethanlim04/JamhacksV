@@ -53,17 +53,17 @@ export const routes = [
     ],
     ["/getStores", "get", async (req, res) => res.status(200).json(await db.getData())],
     [
-        "/writeReview/:city",
+        "/addData/:city",
         "get",
         async (req, res) => {
-            conssole.log(req.params.city)
+            console.log(req)
             if (!req.params.city) {
                 return res.status(400).json({
                     message: "No city specified",
                 })
             }
 
-            const data = await db.getData(req.params.city)
+            const data = {YES: "YUES"}
             return res.status(200).json(data)
         },
     ],
