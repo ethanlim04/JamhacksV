@@ -53,6 +53,11 @@ export const routes = [
         },
     ],
     ["/getStores", "get", async (req, res) => res.status(200).json(await db.getData())],
+    [
+        "/getData/:city",
+        "get",
+        async (req, res) => res.status(200).json(await db.getData(req.params.city)),
+    ],
     ["/image/:user/:store", "get", images.getImage],
 ]
 

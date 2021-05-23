@@ -16,7 +16,7 @@ export type StoresFetch = {
                     [timestamp: number]: {
                         [username: string]: {
                             status: number
-                            image?: string | null
+                            image?: null | bboolean
                         }
                     }
                 }

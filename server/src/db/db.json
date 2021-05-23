@@ -12,13 +12,13 @@
               "10": {
                 "userName1": {
                   "status": 5,
-                  "image": null
+                  "image": false
                 }
               },
               "11": {
                 "userName2": {
                   "status": 5,
-                  "image": null
+                  "image": false
                 }
               }
             }
@@ -34,157 +34,19 @@
               "10": {
                 "userName1": {
                   "status": 5,
-                  "image": null
+                  "image": false
                 }
               },
               "11": {
                 "userName2": {
                   "status": 5,
-                  "image": null
+                  "image": false
                 }
               },
               "1621762436883": {
                 "Irohasu": {
                   "status": "5",
-                  "image": "uh"
-                }
-              },
-              "1621771365450": {
-                "bob": {
-                  "status": 5,
-                  "image": true
-                }
-              },
-              "1621772062687": {
-                "bob": {
-                  "status": 5,
-                  "image": true
-                }
-              },
-              "1621772073733": {
-                "bob": {
-                  "status": 5,
-                  "image": true
-                }
-              },
-              "1621772074811": {
-                "bob": {
-                  "status": 5,
-                  "image": true
-                }
-              },
-              "1621772108461": {
-                "bob": {
-                  "status": 5,
-                  "image": true
-                }
-              },
-              "1621772109779": {
-                "bob": {
-                  "status": 5,
-                  "image": true
-                }
-              },
-              "1621772218919": {
-                "bob": {
-                  "status": 5,
-                  "image": true
-                }
-              },
-              "1621772271276": {
-                "bob": {
-                  "status": 5,
-                  "image": true
-                }
-              },
-              "1621772893776": {
-                "bob": {
-                  "status": 5,
-                  "image": true
-                }
-              },
-              "1621772898797": {
-                "bob": {
-                  "status": 5,
-                  "image": true
-                }
-              },
-              "1621772900093": {
-                "bob": {
-                  "status": 5,
-                  "image": true
-                }
-              },
-              "1621772901113": {
-                "bob": {
-                  "status": 5,
-                  "image": true
-                }
-              },
-              "1621772905185": {
-                "bob": {
-                  "status": 5,
-                  "image": true
-                }
-              },
-              "1621773634053": {
-                "bob": {
-                  "status": 5,
-                  "image": true
-                }
-              },
-              "1621773678289": {
-                "bob": {
-                  "status": 5,
-                  "image": true
-                }
-              },
-              "1621773709282": {
-                "bob": {
-                  "status": 5,
-                  "image": true
-                }
-              },
-              "1621773757377": {
-                "bob": {
-                  "status": 5,
-                  "image": true
-                }
-              },
-              "1621773771205": {
-                "bob": {
-                  "status": 5,
-                  "image": true
-                }
-              },
-              "1621773946792": {
-                "bob": {
-                  "status": 5,
-                  "image": true
-                }
-              },
-              "1621773960345": {
-                "bob": {
-                  "status": 5,
-                  "image": true
-                }
-              },
-              "1621773989571": {
-                "bob": {
-                  "status": 5,
-                  "image": true
-                }
-              },
-              "1621774230031": {
-                "bob": {
-                  "status": 5,
-                  "image": true
-                }
-              },
-              "1621774372013": {
-                "Irohasu": {
-                  "status": 5,
-                  "image": true
+                  "image": false
                 }
               }
             }
@@ -200,13 +62,13 @@
               "10": {
                 "userName1": {
                   "status": 5,
-                  "image": null
+                  "image": false
                 }
               },
               "11": {
                 "userName2": {
                   "status": 5,
-                  "image": null
+                  "image": false
                 }
               },
               "1621774391301": {
@@ -220,14 +82,7 @@
                   "status": 5,
                   "image": true
                 }
-              },
-              "1621777551446": {
-                "Bob": {
-                  "status": 5,
-                  "image": true
-                }
               }
-            }
           }
         },
         "Food Basics": {
@@ -240,13 +95,13 @@
               "10": {
                 "userName1": {
                   "status": 5,
-                  "image": null
+                  "image": false
                 }
               },
               "11": {
                 "userName2": {
                   "status": 5,
-                  "image": null
+                  "image": false
                 }
               }
             }
@@ -262,13 +117,13 @@
               "10": {
                 "userName1": {
                   "status": 5,
-                  "image": null
+                  "image": false
                 }
               },
               "11": {
                 "userName2": {
                   "status": 5,
-                  "image": null
+                  "image": false
                 }
               }
             }
@@ -297,13 +152,13 @@
               "10": {
                 "userName1": {
                   "status": 5,
-                  "image": null
+                  "image": false
                 }
               },
               "11": {
                 "userName2": {
                   "status": 5,
-                  "image": null
+                  "image": false
                 }
               }
             }
