@@ -52,6 +52,19 @@ export const Home = () => {
     const [shownStores, setShownStores] = React.useState(stores)
 
     const setNewStores = React.useCallback(async () => {
+        try {
+            const cache = localStorage.getItem("storesCache")
+
+            if (cache !== null) {
+                const cachedStores = JSON.parse(cache) as Store[]
+
+                if (cachedStores instanceof Array) {
+                    setStores(cachedStores)
+                    setShownStores(cachedStores)
+                }
+            }
+        } catch {}
+
         const coords = await getCoords()
 
         if (coords) {
@@ -59,6 +72,7 @@ export const Home = () => {
 
             setStores(newStores)
             setShownStores(newStores)
+            localStorage.setItem("storesCache", JSON.stringify(newStores))
         }
     }, [])
 

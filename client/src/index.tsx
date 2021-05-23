@@ -4,8 +4,14 @@ import {Route, BrowserRouter as Router, Switch} from "react-router-dom"
 import React from "react"
 import ReactDOM from "react-dom"
 import {Home, Map, Navbar} from "./components"
+import LocationContext from "./contexts/location"
 
 class App extends React.Component {
+    public constructor(props: {}) {
+        super(props
+
+        this.state = {}
+    }
     public render = () => (
         <Router>
             <Navbar />
