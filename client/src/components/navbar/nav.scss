@@ -44,7 +44,7 @@
     z-index: 1000;
     display: flex;
     flex-direction: row;
-    background-color: variables.$darker;
+    justify-content: space-around;
 
     .mobile-nav-underline {
         width: percentage((100 / $nav-item-count) / 100);

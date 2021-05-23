@@ -1,4 +1,5 @@
 import "./styles/index.scss"
+import "./index.scss"
 import {Route, BrowserRouter as Router, Switch} from "react-router-dom"
 import React from "react"
 import ReactDOM from "react-dom"

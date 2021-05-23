@@ -1,0 +1,11 @@
+@use "./styles/variables";
+
+#root {
+    padding-bottom: 60px;
+}
+
+@media (min-width: map-get(variables.$grid-breakpoints, "md")) {
+    #root {
+        padding-bottom: 0;
+    }
+}

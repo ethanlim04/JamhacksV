@@ -1,6 +1,6 @@
 #!/bin/sh
 
-msg="backup at $(node -e 'Math.random() > 0.9 ? console.log(Math.random() > 0.5 ? '\''I am stupid'\'' : '\''I pissed my pants'\'') : console.log((new Date()).toString())')"
+msg="$(node -e 'const rand = Math.random(); rand > 0.7 ? console.log(rand > 0.9 ? '\''I am stupid'\'' : rand > 0.8 ? '\''I crapped my pants'\'' : '\''I pisssed the bed'\'') : console.log('\''backup at'\'', (new Date()).toString())')"
 
 yarn format
 git add .
