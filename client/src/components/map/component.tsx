@@ -19,24 +19,36 @@ type MapState = {
     }
 }
 
-export class Map extends React.PureComponent<{}, MapState> {
-    public constructor(props: {}) {
+type MapProps =
+    | {
+          center: {
+              lat: number
+              lng: number
+          }
+          title: string
+      }
+    | {center?: undefined; title?: undefined}
+
+export class Map extends React.PureComponent<MapProps, MapState> {
+    public constructor(props: MapProps) {
         super(props)
 
         /**
          * IMPORTANT: COORDINATES OF THE KREMLIM: {lat: 55.752121, lng: 37.617664}
          */
 
-        this.state = {}
+        this.state = {center: props.center}
     }
 
     public componentDidMount = async () => {
-        const coords = await getCoords()
+        if (!this.props.center) {
+            const coords = await getCoords()
 
-        if (coords) {
-            this.setState({
-                center: coords,
-            })
+            if (coords) {
+                this.setState({
+                    center: coords,
+                })
+            }
         }
     }
 
@@ -47,9 +59,13 @@ export class Map extends React.PureComponent<{}, MapState> {
     public render = () => {
         const {center} = this.state
 
+        console.log({center})
+
         return center ? (
             <div className="map">
-                <h2 className="map-h2">Stores Near You</h2>
+                <h2 className="map-h2">
+                    {this.props.center ? this.props.title : "Your location"}
+                </h2>
 
                 <div className="google-map">
                     <GoogleMapReact

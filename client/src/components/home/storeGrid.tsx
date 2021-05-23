@@ -3,6 +3,7 @@ import {Card} from "../bootstrap"
 import React from "react"
 import type {Store} from "../../types"
 import {arrayToChunks} from "../../utils"
+import qs from "query-string"
 
 export const StoreGrid: React.FC<{stores: Store[]}> = ({stores}) => (
     <>
@@ -18,7 +19,7 @@ export const StoreGrid: React.FC<{stores: Store[]}> = ({stores}) => (
                                 footerText={`Last updated: ${new Date(lastUpdated).toString()}`}
                                 image={thumbnail}
                                 button={{
-                                    link: `map?lng=${coords.lng}&lat=${coords.lat}`,
+                                    link: `map?${qs.stringify({name, ...coords})}`,
                                     text: "Map",
                                 }}
                             />
