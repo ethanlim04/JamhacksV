@@ -20,6 +20,8 @@ Built from the ground up in react, we've designed this website from the start to
     -   The map was difficult to put together due to some quirks with the google API. It took a lot of trial and error to make it work.
 -   Image upload
     -   Multer was difficult to work with, but we mostly figured it out at the end.
+-   Collaboration
+    -   Live share was a pain in the backside to use. Files didn't save sometimes, or would not sync properly and would break things.
 
 ## Accomplishments that we're proud of
 

@@ -27,10 +27,9 @@ export const getStores = async (currentCoords: LocationObj): Promise<Store[]> =>
 
     for (const [cityName, {Stores: cityStores}] of Object.entries(cities)) {
         for (const [storeName, store] of Object.entries(cityStores)) {
-            const lastUpdated =
-                store.UserReports.time[
-                    Math.max(...Object.keys(store.UserReports.time).map((val) => Number(val)))
-                ]
+            const lastUpdated = Math.max(
+                ...Object.keys(store.UserReports.time).map((val) => Number(val)),
+            )
             const thumbnailStore = Object.values(store.UserReports.time).find((_user) => {
                 const _store = _user[Object.keys(_user)[0]]
 
@@ -45,17 +44,6 @@ export const getStores = async (currentCoords: LocationObj): Promise<Store[]> =>
                 (timestamp) => Date.now() - Number(timestamp) < day / 2,
             )
 
-            if (storeName === "Food Basics") {
-                console.log(
-                    busynessLevels.map((_timestamp) => {
-                        const user = store.UserReports.time[Number(_timestamp)]
-
-                        return Object.values(user)[0].status
-                    }),
-                    busynessLevels,
-                )
-            }
-
             stores.push({
                 name: storeName,
                 location: cityName,
@@ -64,10 +52,7 @@ export const getStores = async (currentCoords: LocationObj): Promise<Store[]> =>
                     lat: store.location[0],
                 },
                 distance: haversine(currentCoords.lat, currentCoords.lng, ...store.location),
-                lastUpdated:
-                    lastUpdated === undefined || isNaN(Number(lastUpdated))
-                        ? undefined
-                        : Number(lastUpdated),
+                lastUpdated: lastUpdated === undefined ? undefined : lastUpdated,
                 thumbnail: thumbnail ?? undefined,
                 busyness:
                     sum(
