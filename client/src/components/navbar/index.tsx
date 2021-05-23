@@ -3,7 +3,7 @@ import {Link, RouteComponentProps, withRouter} from "react-router-dom"
 import {BreakPoints} from "../../globals"
 import React from "react"
 
-const navLinkCount = 5
+const navLinkCount = 2
 
 interface NavState {
     location?: string
