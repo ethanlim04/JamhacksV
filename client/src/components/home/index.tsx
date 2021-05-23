@@ -13,7 +13,7 @@ export const Home = () => {
                 "https://cdn.discordapp.com/attachments/845034023804731453/845831598917943336/unknown.png",
             // location: {lat: 55.752121, lng: 37.617664},
             location: "in ur mom",
-            name: "your mom",
+            name: "Costco",
             distance: -100,
             lastUpdated: Date.now(),
         },
