@@ -27,7 +27,7 @@ app.use(compression())
 
 declareRoutes(app)
 
-app.post("/addData", upload.upload.single("image"), (req, res) => {
+app.post("/addData", upload.upload_function("Irohasu"), (req, res) => {
     console.log(req.body)
     db.writeData(
         req.body.City,
