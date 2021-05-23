@@ -2,10 +2,7 @@ export type Store = {
     thumbnail?: string
     name: string
     location: string
-    coords: {
-        lat: number
-        lng: number
-    }
+    coords: LocationObj
     distance: number
     lastUpdated?: number
 }

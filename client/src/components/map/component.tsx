@@ -13,18 +13,12 @@ const LocationPin: React.FC<{[key: string]: unknown}> = () => (
 )
 
 type MapState = {
-    center?: {
-        lat: number
-        lng: number
-    }
+    center?: LocationObj
 }
 
 type MapProps =
     | {
-          center: {
-              lat: number
-              lng: number
-          }
+          center: LocationObj
           title: string
       }
     | {center?: undefined; title?: undefined}

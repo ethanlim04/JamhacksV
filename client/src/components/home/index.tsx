@@ -4,7 +4,7 @@ import React from "react"
 import {Spinner} from "../bootstrap"
 import {StoreGrid} from "./storeGrid"
 import type {CitiesFetch, Store} from "../../types"
-import {getCoords} from "../../utils"
+import {getCoords, haversine} from "../../utils"
 import {url} from "../../globals"
 
 // thumbnail, name, location, time last updated
@@ -14,7 +14,7 @@ const searchOptions: Fuse.IFuseOptions<Store> = {
     shouldSort: true,
 }
 
-const getStores = async (): Promise<Store[]> => {
+const getStores = async (currentCoords: LocationObj): Promise<Store[]> => {
     const {Cities: cities} = (await (
         await fetch(`${url}/getStores`, {method: "GET"})
     ).json()) as CitiesFetch
@@ -34,7 +34,7 @@ const getStores = async (): Promise<Store[]> => {
                     lng: store.location[1],
                     lat: store.location[0],
                 },
-                distance: 0,
+                distance: haversine(currentCoords.lat, currentCoords.lng, ...store.location),
                 lastUpdated:
                     lastUpdated === undefined || isNaN(Number(lastUpdated))
                         ? undefined
@@ -68,7 +68,7 @@ export const Home = () => {
         const coords = await getCoords()
 
         if (coords) {
-            const newStores = await getStores()
+            const newStores = await getStores(coords)
 
             setStores(newStores)
             setShownStores(newStores)

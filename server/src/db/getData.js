@@ -5,10 +5,10 @@ import {fileURLToPath} from "url"
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
-export const getData = async (city) => {
+export const getData = async (City) => {
     const result = JSON.parse(await fs.readFile(path.join(__dirname, "db.json"), "utf-8"))
 
-    return city ? result.Cities[city] : result
+    return City ? result.Cities[City] : result
 }
 
 export const getStores = async (City) => {
@@ -17,7 +17,7 @@ export const getStores = async (City) => {
     Object.entries(result.Cities[City].Stores).forEach(([key, value]) => {
         out[key] = value.location
     })
-    console.log(out)
+    // console.log(out)
     return out
 }
 

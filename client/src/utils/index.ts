@@ -16,7 +16,7 @@ export const arrayToChunks = <T>(arr: T[], chunkSize = 3): T[][] => {
     return chunks
 }
 
-export const getCoords = async (): Promise<{lat: number; lng: number} | undefined> => {
+export const getCoords = async (): Promise<LocationObj | undefined> => {
     try {
         const location = await new Promise<GeolocationPosition>((resolve, reject) => {
             navigator.geolocation?.getCurrentPosition(resolve, reject, {
@@ -87,3 +87,25 @@ export function timeDifference(current: number, previous?: number): string {
 
     return `${n} ${s + (n == 1 ? "" : "s")} ago`
 }
+
+/**
+ * The haversine formula determines the great-circle distance between two points on a sphere given
+ * their longitudes and latitudes. Important in navigation, it is a special case of a more general
+ * formula in spherical trigonometry, the law of haversines, that relates the sides and angles of
+ * spherical triangles.
+ *
+ * @param lat1 - Latitude coordinate 1
+ * @param long1 - Longitude coordinate 1
+ * @param lat2 - Latitude coordinate 2
+ * @param long2 - Longitude coordinate 2
+ * @returns Distance between lat1 long2 and lat2 long2
+ * @see {@link https://en.wikipedia.org/wiki/Haversine_formula}
+ */
+export const haversine = (lat1: number, long1: number, lat2: number, long2: number): number =>
+    12742 *
+    Math.asin(
+        Math.sqrt(
+            Math.sin((lat2 - lat1) / 2) ** 2 +
+                Math.cos(lat1) * Math.cos(lat2) * Math.sin((long2 - long1) / 2) ** 2,
+        ),
+    )
