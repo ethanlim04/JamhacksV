@@ -14,7 +14,7 @@ export const StoreGrid: React.FC<{stores: Store[]}> = ({stores}) => (
                         <div className="col-12 col-md-4" key={`store-${index}-${index2}`}>
                             <Card
                                 title={name}
-                                distance={String(distance)}
+                                distance={distance}
                                 text={`Store in ${location}`}
                                 footerText={
                                     lastUpdated

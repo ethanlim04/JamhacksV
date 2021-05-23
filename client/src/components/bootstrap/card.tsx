@@ -1,8 +1,9 @@
 import React from "react"
+import {formatDistance} from "../../utils"
 
 type CardProps = {
     title?: string
-    distance?: string
+    distance?: number
     image?: string
     text?: string
     button?: {
@@ -35,7 +36,7 @@ export const Card: React.FC<CardProps> = ({
                 ) : undefined}
                 {distance ? (
                     <div className="col card-text">
-                        <small className="text-muted">{distance + "km away"}</small>
+                        <small className="text-muted">{`${formatDistance(distance)} away`}</small>
                     </div>
                 ) : undefined}
             </div>

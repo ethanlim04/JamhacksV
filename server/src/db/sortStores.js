@@ -14,12 +14,14 @@ const toRad = (n) => (n * Math.PI) / 180
  * @see {@link https://en.wikipedia.org/wiki/Haversine_formula}
  */
 export const haversine = (lat1, long1, lat2, long2) =>
-    12742 *
-    Math.asin(
-        Math.sqrt(
-            Math.sin((lat2 - lat1) / 2) ** 2 +
-                Math.cos(lat1) * Math.cos(lat2) * Math.sin((long2 - long1) / 2) ** 2,
-        ),
+    Math.abs(
+        12742 *
+            Math.asin(
+                Math.sqrt(
+                    Math.sin((lat2 - lat1) / 2) ** 2 +
+                        Math.cos(lat1) * Math.cos(lat2) * Math.sin((long2 - long1) / 2) ** 2,
+                ),
+            ),
     )
 
 export const sortData = (location, stores) => {
