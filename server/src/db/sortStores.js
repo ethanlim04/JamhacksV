@@ -2,12 +2,11 @@ const haversine = (lat1, long1, lat2, long2) => {
     const r = 6371
 
     return (
-        2 *
-        r *
+        2 * r *
         Math.asin(
             Math.sqrt(
                 Math.sin((lat2 - lat1) / 2) ** 2 +
-                    Math.cos(lat1) * Math.cos(lat2) * Math.sin((long2 - long1) / 2) ** 2,
+                Math.cos(lat1) * Math.cos(lat2) * Math.sin((long2 - long1) / 2) ** 2,
             ),
         )
     )
