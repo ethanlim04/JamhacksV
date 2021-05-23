@@ -103,7 +103,10 @@ export class Navbar extends React.PureComponent<Partial<RouteComponentProps>, Na
         const NavLink = this._navLink
 
         if (ismobile) {
-            const navValues: [string, string, string][] = [["/", "home", "Home"]]
+            const navValues: [location: string, icon: string, displayName: string][] = [
+                ["/", "home", "Home"],
+                ["/map", "place", "Map"],
+            ]
 
             this._setCurrentPage(navValues)
 
@@ -123,7 +126,7 @@ export class Navbar extends React.PureComponent<Partial<RouteComponentProps>, Na
 
         const navValues: string[][] = [
             ["/", "Home"],
-            ["/map", "Map"]
+            ["/map", "Map"],
         ]
 
         this._setCurrentPage(navValues)
