@@ -6,10 +6,7 @@ do
     ./backup.sh
 
     clear
-    echo "Next backup in 10 minutes"
+    echo "Next backup in 10 minutes at $(node -e 'new Date(Date.now() + 600_000).toString()')"
 
-    for i in {9...0}; do
-        sleep 60
-        echo "Next backup in $i minutes"
-    done
+    sleep 600
 done
