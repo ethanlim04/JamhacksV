@@ -2,7 +2,7 @@ import "./home.scss"
 import {Card} from "../bootstrap"
 import React from "react"
 import type {Store} from "../../types"
-import {arrayToChunks} from "../../utils"
+import {arrayToChunks, getCoords} from "../../utils"
 
 // thumbnail, name, location, time last updated
 
@@ -17,6 +17,17 @@ export const Home = () => {
         },
     ])
 
+    React.useCallback<void>(async () => {
+        const coords = await getCoords()
+
+        if (coords) {
+        }
+    })
+
+    const onChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
+        console.log(event.target.value)
+    }
+
     return (
         <div className="home-search">
             <nav className="navbar navbar-dark bg-dark">
@@ -28,6 +39,7 @@ export const Home = () => {
                             placeholder="Search for stores..."
                             aria-label="Store"
                             aria-describedby="basic-addon1"
+                            onChange={onChange}
                         />
                     </div>
                 </form>

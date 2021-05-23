@@ -15,3 +15,24 @@ export const arrayToChunks = <T>(arr: T[], chunkSize = 3): T[][] => {
 
     return chunks
 }
+
+export const getCoords = async (): Promise<{lat: number; lng: number} | undefined> => {
+    try {
+        const location = await new Promise<GeolocationPosition>((resolve, reject) => {
+            navigator.geolocation?.getCurrentPosition(resolve, reject, {
+                enableHighAccuracy: true,
+            })
+        })
+
+        return {
+            lat: location.coords.latitude,
+            lng: location.coords.longitude,
+        }
+    } catch (err) {
+        console.error(err instanceof Error ? err.toString() : JSON.stringify(err))
+
+        alert(err instanceof Error ? err.toString() : JSON.stringify(err))
+
+        return
+    }
+}
