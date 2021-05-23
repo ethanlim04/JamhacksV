@@ -7,6 +7,8 @@ import declareRoutes from "./routes"
 import * as upload from "./db/imageupload"
 import * as db from "./db/getData"
 
+import * as fs from "fs-extra"
+
 export const app = express()
 
 app.use(
@@ -28,7 +30,7 @@ app.use(compression())
 declareRoutes(app)
 
 // app.post("/addData", upload.upload_function("./tmp/image.png"), (req, res) => {
-app.post("/addData", upload.upload_function("temp"), (req, res) => {
+app.post("/addData", upload.upload_function("./temp/image.png"), (req, res) => {
     const {query} = req
     console.log(query)
     // E.g http://localhost:3333/addData?username=bob&city=Waterloo&storeName=Costco&status=5&picture=true
@@ -37,7 +39,14 @@ app.post("/addData", upload.upload_function("temp"), (req, res) => {
     const status = Number(query.status)
     const picture = query.picture ? query.picture === "true" : undefined
 
-    console.log({city, storeName, username, status, picture})
+    console.log({city, storeName, username, status, picture, file: req.files})
+
+    let fileName = req.file.filename
+    console.log(fileName)
+    fs.move(
+        "./src/db/image/temp/" + fileName,
+        "./src/db/image/" + username + "/" + storeName + ".png",
+    )
 
     if (
         typeof city === "string" &&

@@ -2,10 +2,32 @@
   "Cities": {
     "Waterloo": {
       "Stores": {
+        "Zehrs": {
+          "location": [
+            43.453054148092285,
+            -80.55584885574379
+          ],
+          "UserReports": {
+            "time": {
+              "10": {
+                "userName1": {
+                  "status": 5,
+                  "image": null
+                }
+              },
+              "11": {
+                "userName2": {
+                  "status": 5,
+                  "image": null
+                }
+              }
+            }
+          }
+        },
         "Costco": {
           "location": [
-            43.4457429,
-            -80.5794693
+            43.44535864907366,
+            -80.57966687142263
           ],
           "UserReports": {
             "time": {
@@ -104,6 +126,66 @@
                   "status": 5,
                   "image": true
                 }
+              },
+              "1621773634053": {
+                "bob": {
+                  "status": 5,
+                  "image": true
+                }
+              },
+              "1621773678289": {
+                "bob": {
+                  "status": 5,
+                  "image": true
+                }
+              },
+              "1621773709282": {
+                "bob": {
+                  "status": 5,
+                  "image": true
+                }
+              },
+              "1621773757377": {
+                "bob": {
+                  "status": 5,
+                  "image": true
+                }
+              },
+              "1621773771205": {
+                "bob": {
+                  "status": 5,
+                  "image": true
+                }
+              },
+              "1621773946792": {
+                "bob": {
+                  "status": 5,
+                  "image": true
+                }
+              },
+              "1621773960345": {
+                "bob": {
+                  "status": 5,
+                  "image": true
+                }
+              },
+              "1621773989571": {
+                "bob": {
+                  "status": 5,
+                  "image": true
+                }
+              },
+              "1621774230031": {
+                "bob": {
+                  "status": 5,
+                  "image": true
+                }
+              },
+              "1621774372013": {
+                "Irohasu": {
+                  "status": 5,
+                  "image": true
+                }
               }
             }
           }
@@ -125,6 +207,12 @@
                 "userName2": {
                   "status": 5,
                   "image": null
+                }
+              },
+              "1621774391301": {
+                "Irohasu": {
+                  "status": 5,
+                  "image": true
                 }
               }
             }

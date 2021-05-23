@@ -7,7 +7,7 @@ export const upload_function = (dirName) => {
             cb(null, `./src/db/image/${dirName}`)
         },
         filename: (req, file, cb) => {
-            cb(null, Date.now() + "--" + file.originalname)
+            cb(null, file.originalname)
         },
     })
 
