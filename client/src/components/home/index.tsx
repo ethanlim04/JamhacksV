@@ -1,18 +1,23 @@
 import "./home.scss"
 import {Card} from "../bootstrap"
-import FuzzySearch from "fuzzy-search"
+import Fuse from "fuse.js"
 import React from "react"
 import type {Store} from "../../types"
 import {arrayToChunks, getCoords} from "../../utils"
 
 // thumbnail, name, location, time last updated
 
+const searchOptions: Fuse.IFuseOptions<Store> = {
+    keys: ["location", "name"],
+    shouldSort: true,
+}
+
 export const Home = () => {
     const [stores, setStores] = React.useState<Store[]>([
         {
             thumbnail:
                 "https://cdn.discordapp.com/attachments/845034023804731453/845831598917943336/unknown.png",
-            // location: {lat: 55.752121, lng: 37.617664},
+            coords: {lat: 55.752121, lng: 37.617664},
             location: "in ur mom",
             name: "Costco",
             distance: -100,
@@ -32,19 +37,10 @@ export const Home = () => {
     const onChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
         setSearchValue(event.target.value)
 
-        setShownStores(
-            searchValue
-                ? stores.filter((store) =>
-                      {
-                          const res = FuzzySearch.isMatch(`${store.location} ${store.name}`, searchValue, false)
+        const fuse = new Fuse(stores, searchOptions)
+        const search = fuse.search(searchValue)
 
-                          console.log(res)
-
-                          return res
-                      },
-                  )
-                : stores,
-        )
+        setShownStores(search.map((item) => item.item))
     }
 
     return (

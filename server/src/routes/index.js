@@ -36,12 +36,35 @@ import * as db from "../db/getData"
 // export const routes = [["/getStores", "get", (req, res) => {res.json(db.getData(req.body.City))}]]
 export const routes = [
     [
-        "/getStores",
+        "/getStores/:city",
         "get",
         async (req, res) => {
-            // console.log(await db.getData("Waterloo"))
+            console.log(req.params.city)
+            if (!req.params.city) {
+                return res.status(400).json({
+                    message: "No city specified",
+                })
+            }
 
-            res.status(200).json(await db.getData("Waterloo"))
+            const data = await db.getData(req.params.city)
+
+            return res.status(200).json(data)
+        },
+    ],
+    ["/getStores", "get", async (req, res) => res.status(200).json(await db.getData())],
+    [
+        "/writeReview/:city",
+        "get",
+        async (req, res) => {
+            conssole.log(req.params.city)
+            if (!req.params.city) {
+                return res.status(400).json({
+                    message: "No city specified",
+                })
+            }
+
+            const data = await db.getData(req.params.city)
+            return res.status(200).json(data)
         },
     ],
 ]
