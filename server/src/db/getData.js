@@ -13,7 +13,7 @@ const getData = async () => {
 
 const writeData = async (City, StoreName, Username, Status, Picture) => {
     const result = JSON.parse(await fs.readFile("./db.json", "utf-8"))
-    const currentTime = await new Date().getTime()
+    const currentTime = new Date().getTime()
 
     result.Cities[City].Stores[StoreName].UserReports.time[currentTime] = {}
     result.Cities[City].Stores[StoreName].UserReports.time[currentTime][Username] = {
