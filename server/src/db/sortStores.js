@@ -46,3 +46,5 @@ const sortData = (location, stores) => {
 
     return names
 }
+
+console.log(haversine(43.445407768273796, -80.57966495025991, 43.455607335555065, -80.38605957256729))

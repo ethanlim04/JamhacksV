@@ -59,21 +59,23 @@ export const Home = () => {
         setNewStores()
     }, [])
 
-    const onChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
-        console.log(event.target.value);
-        setSearchValue(event.target.value)
+    const onChange: React.ChangeEventHandler<HTMLInputElement> = ({
+        target: {value: searchTerm},
+    }) => {
+        setSearchValue(() => {
+            if (stores) {
+                if (searchTerm.length > 0) {
+                    const fuse = new Fuse(stores, searchOptions)
+                    const search = fuse.search(searchTerm)
 
-        if (stores) {
-            if (searchValue.length > 0) {
-                const fuse = new Fuse(stores, searchOptions)
-                const search = fuse.search(searchValue)
-
-                setShownStores(search.map((item) => item.item))
-            } else {
-                console.log("EMPTY")
-                setShownStores(stores)
+                    setShownStores(search.map((item) => item.item))
+                } else {
+                    setShownStores(stores)
+                }
             }
-        }
+
+            return searchTerm
+        })
     }
 
     return (
