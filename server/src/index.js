@@ -8,6 +8,7 @@ import * as upload from "./db/imageupload"
 import * as db from "./db/getData"
 
 import * as fs from "fs-extra"
+import * as multer from "multer"
 
 export const app = express()
 
@@ -30,7 +31,7 @@ app.use(compression())
 declareRoutes(app)
 
 // app.post("/addData", upload.upload_function("./tmp/image.png"), (req, res) => {
-app.post("/addData", upload.upload_function("./temp/image.png"), (req, res) => {
+app.post("/addData", upload.upload_function("temp"), (req, res) => {
     const {query} = req
     console.log(query)
     // E.g http://localhost:3333/addData?username=bob&city=Waterloo&storeName=Costco&status=5&picture=true
@@ -39,7 +40,7 @@ app.post("/addData", upload.upload_function("./temp/image.png"), (req, res) => {
     const status = Number(query.status)
     const picture = query.picture ? query.picture === "true" : undefined
 
-    console.log({city, storeName, username, status, picture, file: req.files})
+    console.log({city, storeName, username, status, picture, body: req.body})
 
     let fileName = req.file.filename
     console.log(fileName)

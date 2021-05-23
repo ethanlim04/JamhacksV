@@ -1,4 +1,5 @@
 import React from "react"
+import axios from "axios"
 import qs from "query-string"
 import {url} from "../../globals"
 
@@ -26,7 +27,9 @@ export class Form extends React.PureComponent<FormProps, FormState> {
 
         const formData = new FormData()
 
-        if (this.state.image) {
+        console.log(this.state.image)
+
+        if (this.state.image !== undefined) {
             formData.append(this.state.image.name, this.state.image, this.state.image.name)
         }
 
@@ -39,13 +42,11 @@ export class Form extends React.PureComponent<FormProps, FormState> {
             })}`,
             {
                 method: "POST",
-                headers: {
-                    // "Content-Type": "multipart/form-data",
-                },
+                body: formData,
             },
         )
 
-        console.log(response, await response.text())
+        console.log(response)
     }
 
     public onSliderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -91,7 +92,7 @@ export class Form extends React.PureComponent<FormProps, FormState> {
             </label>
             <label className="form-label mt-3">
                 Optional: Please upload a picture
-                <input type="file" onChange={this.onFileUpload} />
+                <input type="file" accept=".png," onChange={this.onFileUpload} />
             </label>
             <button type="submit" className="btn btn-primary mt-3">
                 Submit
