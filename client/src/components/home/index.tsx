@@ -11,8 +11,10 @@ export const Home = () => {
         {
             thumbnail:
                 "https://cdn.discordapp.com/attachments/845034023804731453/845831598917943336/unknown.png",
-            location: {lat: 55.752121, lng: 37.617664},
+            // location: {lat: 55.752121, lng: 37.617664},
+            location: "in ur mom",
             name: "your mom",
+            distance: -100,
             lastUpdated: Date.now(),
         },
     ])
@@ -51,7 +53,7 @@ export const Home = () => {
                             <div className="col-12 col-md-4" key={`store-${index}-${index2}`}>
                                 <Card
                                     title={name}
-                                    text={`Store at ${JSON.stringify(location)}`}
+                                    text={`Store at ${location}}`}
                                     footerText={`Last updated: ${new Date(
                                         lastUpdated,
                                     ).toString()}`}
