@@ -1,12 +1,14 @@
+const toRad = (n) => (n * Math.PI) / 180
+
 const haversine = (lat1, long1, lat2, long2) => {
-    const r = 6371
+    // const r = 6371
 
     return (
-        2 * r *
+        12742 *
         Math.asin(
             Math.sqrt(
                 Math.sin((lat2 - lat1) / 2) ** 2 +
-                Math.cos(lat1) * Math.cos(lat2) * Math.sin((long2 - long1) / 2) ** 2,
+                    Math.cos(lat1) * Math.cos(lat2) * Math.sin((long2 - long1) / 2) ** 2,
             ),
         )
     )
@@ -46,4 +48,6 @@ const sortData = (location, stores) => {
     return names
 }
 
-console.log(haversine(43.445407768273796, -80.57966495025991, 43.455607335555065, -80.38605957256729))
+console.log(
+    haversine(43.445407768273796, -80.57966495025991, 43.455607335555065, -80.38605957256729),
+)

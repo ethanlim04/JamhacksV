@@ -3,6 +3,7 @@ import {Card} from "../bootstrap"
 import Fuse from "fuse.js"
 import React from "react"
 import {Spinner} from "../bootstrap"
+import {StoreGrid} from "./storeGrid"
 import type {CitiesFetch, Store} from "../../types"
 import {arrayToChunks, getCoords} from "../../utils"
 import {url} from "../../globals"
@@ -97,31 +98,7 @@ export const Home = () => {
             </nav>
             <div className="stores">
                 {shownStores ? (
-                    arrayToChunks(shownStores, 3).map((storesRow, index) => (
-                        <div
-                            className="row my-0 g-3 my-md-2 g-md-3 my-lg-3 g-lg-5"
-                            key={`store-${index}`}
-                        >
-                            {storesRow.map(
-                                ({name, location, distance, lastUpdated, thumbnail}, index2) => (
-                                    <div
-                                        className="col-12 col-md-4"
-                                        key={`store-${index}-${index2}`}
-                                    >
-                                        <Card
-                                            title={name}
-                                            distance={String(distance)}
-                                            text={`Store at ${location}`}
-                                            footerText={`Last updated: ${new Date(
-                                                lastUpdated,
-                                            ).toString()}`}
-                                            image={thumbnail}
-                                        />
-                                    </div>
-                                ),
-                            )}
-                        </div>
-                    ))
+                    <StoreGrid stores={shownStores} />
                 ) : (
                     <Spinner color="primary" size="25vw" className="my-5" centered />
                 )}
