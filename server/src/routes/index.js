@@ -54,9 +54,9 @@ export const routes = [
     ["/getStores", "get", async (req, res) => res.status(200).json(await db.getData())],
     [
         "/addData/:city",
-        "get",
+        "post",
         async (req, res) => {
-            console.log(req)
+            console.log(req.body)
             if (!req.params.city) {
                 return res.status(400).json({
                     message: "No city specified",

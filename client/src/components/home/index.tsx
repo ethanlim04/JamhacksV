@@ -2,6 +2,7 @@ import "./home.scss"
 import {Card} from "../bootstrap"
 import Fuse from "fuse.js"
 import React from "react"
+import {Spinner} from "../bootstrap"
 import type {CitiesFetch, Store} from "../../types"
 import {arrayToChunks, getCoords} from "../../utils"
 import {url} from "../../globals"
@@ -39,36 +40,40 @@ const getStores = async (): Promise<Store[]> => {
 }
 
 export const Home = () => {
-    const [stores, setStores] = React.useState<Store[]>([
-        {
-            thumbnail:
-                "https://cdn.discordapp.com/attachments/845034023804731453/845831598917943336/unknown.png",
-            coords: {lat: 55.752121, lng: 37.617664},
-            location: "in ur mom",
-            name: "Costco",
-            distance: -100,
-            lastUpdated: Date.now(),
-        },
-    ])
+    const [stores, setStores] = React.useState<Store[] | undefined>()
     const [searchValue, setSearchValue] = React.useState("")
     const [shownStores, setShownStores] = React.useState(stores)
 
-    React.useCallback(async () => {
+    const setNewStores = React.useCallback(async () => {
         const coords = await getCoords()
 
         if (coords) {
-            setStores(await getStores())
-            setShownStores(stores)
+            const newStores = await getStores()
+
+            setStores(newStores)
+            setShownStores(newStores)
         }
     }, [])
 
+    React.useEffect(() => {
+        setNewStores()
+    }, [])
+
     const onChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
+        console.log(event.target.value);
         setSearchValue(event.target.value)
 
-        const fuse = new Fuse(stores, searchOptions)
-        const search = fuse.search(searchValue)
+        if (stores) {
+            if (searchValue.length > 0) {
+                const fuse = new Fuse(stores, searchOptions)
+                const search = fuse.search(searchValue)
 
-        setShownStores(search.map((item) => item.item))
+                setShownStores(search.map((item) => item.item))
+            } else {
+                console.log("EMPTY")
+                setShownStores(stores)
+            }
+        }
     }
 
     return (
@@ -89,25 +94,35 @@ export const Home = () => {
                 </form>
             </nav>
             <div className="stores">
-                {arrayToChunks(shownStores, 3).map((storesRow, index) => (
-                    <div className="row g-0 g-md-3 g-lg-5" key={`store-${index}`}>
-                        {storesRow.map(
-                            ({name, location, distance, lastUpdated, thumbnail}, index2) => (
-                                <div className="col-12 col-md-4" key={`store-${index}-${index2}`}>
-                                    <Card
-                                        title={name}
-                                        distance={String(distance)}
-                                        text={`Store at ${location}`}
-                                        footerText={`Last updated: ${new Date(
-                                            lastUpdated,
-                                        ).toString()}`}
-                                        image={thumbnail}
-                                    />
-                                </div>
-                            ),
-                        )}
-                    </div>
-                ))}
+                {shownStores ? (
+                    arrayToChunks(shownStores, 3).map((storesRow, index) => (
+                        <div
+                            className="row my-0 g-3 my-md-2 g-md-3 my-lg-3 g-lg-5"
+                            key={`store-${index}`}
+                        >
+                            {storesRow.map(
+                                ({name, location, distance, lastUpdated, thumbnail}, index2) => (
+                                    <div
+                                        className="col-12 col-md-4"
+                                        key={`store-${index}-${index2}`}
+                                    >
+                                        <Card
+                                            title={name}
+                                            distance={String(distance)}
+                                            text={`Store at ${location}`}
+                                            footerText={`Last updated: ${new Date(
+                                                lastUpdated,
+                                            ).toString()}`}
+                                            image={thumbnail}
+                                        />
+                                    </div>
+                                ),
+                            )}
+                        </div>
+                    ))
+                ) : (
+                    <Spinner color="primary" size="25vw" className="my-5" centered />
+                )}
             </div>
         </div>
     )
