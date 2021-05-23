@@ -29,7 +29,5 @@ overrides:
       - "*.yml"
       - "*.yaml"
       - "*.json"
-      - "*.css"
-      - "*.scss"
     options:
       tabWidth: 2

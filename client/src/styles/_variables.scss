@@ -19,19 +19,19 @@ $body-bg: $dark;
 $body-color: $light;
 
 $theme-colors: map-merge(
-  $theme-colors,
-  (
-    none: $none,
-    primary: $primary,
-    secondary: $secondary,
-    light: $light,
-    lighter: $lighter,
-    light-grey: $light-grey,
-    dark: $dark,
-    accent: $accent,
-    darker: $darker,
-    dark-grey: $dark-grey,
-  )
+    $theme-colors,
+    (
+        none: $none,
+        primary: $primary,
+        secondary: $secondary,
+        light: $light,
+        lighter: $lighter,
+        light-grey: $light-grey,
+        dark: $dark,
+        accent: $accent,
+        darker: $darker,
+        dark-grey: $dark-grey,
+    )
 );
 
 $spacer: 1rem;
@@ -40,29 +40,29 @@ $spacers: ();
 
 // Add extra spacers
 $spacers: map-merge(
-  (
-    0: 0,
-    1: (
-      $spacer * 0.25,
+    (
+        0: 0,
+        1: (
+            $spacer * 0.25,
+        ),
+        2: (
+            $spacer * 0.5,
+        ),
+        3: $spacer,
+        4: (
+            $spacer * 1.5,
+        ),
+        5: (
+            $spacer * 3,
+        ),
+        6: (
+            $spacer * 6,
+        ),
+        7: (
+            $spacer * 12,
+        ),
     ),
-    2: (
-      $spacer * 0.5,
-    ),
-    3: $spacer,
-    4: (
-      $spacer * 1.5,
-    ),
-    5: (
-      $spacer * 3,
-    ),
-    6: (
-      $spacer * 6,
-    ),
-    7: (
-      $spacer * 12,
-    ),
-  ),
-  $spacers
+    $spacers
 );
 
 $grid-gutter-width: 0; // Set gutter width to 0
